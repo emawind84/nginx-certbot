@@ -4,11 +4,12 @@ services:
   certbot:
     build: certbot
     image: nginx-certbot
+    ports:
+    - "80:80"
     volumes:
     - ${CERTBOT_CERTS_PATH}:/etc/letsencrypt
-    - ${CERTBOT_WEBROOT}:/usr/share/nginx/html
     environment:
-    - CERTBOT_STANDALONE=false
+    - CERTBOT_STANDALONE=true
     - CERTBOT_HOST
     - CERTBOT_EMAIL
     - CERTBOT_CERTS_PATH

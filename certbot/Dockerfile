@@ -8,7 +8,8 @@ RUN apt-get update && apt-get -y install \
 
 RUN set -xe \
     && wget https://dl.eff.org/certbot-auto \
-    && chmod a+x /certbot-auto
+    && chmod a+x /certbot-auto \
+    && /bin/sh certbot-auto --quiet --os-packages-only
 
 COPY ./docker-entrypoint.sh ./entrypoint.sh
 RUN chmod +x /entrypoint.sh
