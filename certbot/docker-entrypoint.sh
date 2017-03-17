@@ -13,8 +13,14 @@ echo "- certificate location: ${CERTBOT_CERTS_PATH}"
 
 if [ $# -eq 0 ]; then
     exec /bin/sh /certbot-auto certonly \
-        -n --agree-tos --no-self-upgrade --email ${CERTBOT_EMAIL} --webroot \
-        -w /usr/share/nginx/html -d ${CERTBOT_HOST} 
+        --expand \
+        --non-interactive \
+        --agree-tos \
+        --no-self-upgrade \
+        --email ${CERTBOT_EMAIL} \
+        --webroot \
+        --webroot-path /usr/share/nginx/html \
+        --domains ${CERTBOT_HOST}
         #--force-renewal
 fi
 

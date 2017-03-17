@@ -2,7 +2,7 @@ version: "2"
 
 services:
   certbot:
-    build: certbot
+    image: ${REGISTRY_URL}/nginx-certbot
     ports:
     - "80:80"
     volumes:

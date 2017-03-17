@@ -3,7 +3,6 @@ version: "2"
 services:
   certbot:
     build: certbot
-    image: nginx-certbot
     volumes:
     - ${CERTBOT_CERTS_PATH}:/etc/letsencrypt
     - ${CERTBOT_WEBROOT}:/usr/share/nginx/html
