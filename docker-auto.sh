@@ -7,6 +7,9 @@
 
 set -e
 
+SCRIPT_BASE_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "$SCRIPT_BASE_PATH"
+
 IMAGE_NAME="$IMAGE_NAME"
 if [ -z "$IMAGE_NAME" ]; then
     IMAGE_NAME="$(cat .env | awk 'BEGIN { FS="="; } /^IMAGE_NAME/ {sub(/\r/,"",$2); print $2;}')"
@@ -15,9 +18,6 @@ REGISTRY_URL="$REGISTRY_URL"
 if [ -z "$REGISTRY_URL" ]; then
     REGISTRY_URL="$(cat .env | awk 'BEGIN { FS="="; } /^REGISTRY_URL/ {sub(/\r/,"",$2); print $2;}')"
 fi
-
-SCRIPT_BASE_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd "$SCRIPT_BASE_PATH"
 
 usage() {
 echo "Usage:  $(basename "$0") [MODE] [OPTIONS] [COMMAND]"
